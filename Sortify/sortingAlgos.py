@@ -66,10 +66,10 @@ class Sortify:
     def insertionSort(array, reverse = False):
         """Performs insertion sort on the input array.
         Args:
-            array- The array that you want to sort
-            reverse- True to sort the array in decsending order, else False
+            array (list/iterable)- The array that you want to sort
+            reverse (bool)- True to sort the array in decsending order, else False
         Returns:
-            sortedArray- The array after sorting
+            sortedArray (list/iterable)- The array after sorting
         """
         n = len(array)
         if reverse:    
