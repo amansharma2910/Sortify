@@ -1,6 +1,6 @@
 class Sortify:
     @staticmethod
-    def bubbleSort(array, reverse = False):
+    def bubble(array, reverse = False):
         """Performs bubble sort on the input array.
         Args-
             array (list/iterable): The array that you want to sort
@@ -31,39 +31,37 @@ class Sortify:
 
 
     @staticmethod
-    def selectionSort(array, reverse = False):
+    def selection(array, reverse = False):
         """Performs selection sort on the input array.
-        Args:
-            array- The array that you want to sort
-            reverse- True to sort the array in decsending order, else False
+        Args-
+            array (list/iterable): The array that you want to sort
+            reverse (bool): True to sort the array in decsending order, else False
         Returns:
-            sortedArray- The array after sorting
+            sortedArray (list/iterable): The array after sorting
         """
         n = len(array)
-        while n:
-            if reverse:    
+        if reverse:
+            while n:
                 smallest_val_index = 0
                 for i in range(n):
                     if array[i] < array[smallest_val_index]:
                         smallest_val_index = i  
-                array[i], array[smallest_val_index] = array[smallest_val_index], array[i]
-
-            else:    
+                array[i], array[smallest_val_index] = array[smallest_val_index], array[i] 
+                n -= 1
+        else:
+            while n:    
                 largest_val_index = 0
                 for i in range(n):
                     if array[i] > array[largest_val_index]:
                         largest_val_index = i  
                 array[i], array[largest_val_index] = array[largest_val_index], array[i] 
-            
-            n -= 1 
-        
+                n -= 1
+  
         return array 
     
 
-
-    
     @staticmethod
-    def insertionSort(array, reverse = False):
+    def insertion(array, reverse = False):
         """Performs insertion sort on the input array.
         Args:
             array (list/iterable)- The array that you want to sort
@@ -97,7 +95,7 @@ class Sortify:
         return array
     
     @staticmethod
-    def quickSort(array, reverse = False):
+    def quick(array, reverse = False):
         """Performs quick sort on the input array.
         Args-
             array (list/iterable): The array that you want to sort
@@ -131,13 +129,13 @@ class Sortify:
                 else:
                     same.append(element)
 
-        return Sortify.quickSort(left, reverse) + same + Sortify.quickSort(right, reverse) # using recursion for further sorting
+        return Sortify.quick(left, reverse) + same + Sortify.quick(right, reverse) # using recursion for further sorting
 
     
     
     # helper method for merge sort
     @staticmethod
-    def merge(left, right, reverse):
+    def mergeList(left, right, reverse):
         
         sorted = [] # we need to add elements from left and right array in a way after the merge is complete, we get a sorted merge
         
@@ -180,13 +178,13 @@ class Sortify:
         return sorted
     
     @staticmethod
-    def mergeSort(array, reverse = False):
+    def merge(array, reverse = False):
         """Performs merge sort on the input array.
         Args:
-            array- The array that you want to sort
-            reverse- True to sort the array in decsending order, else False
+            array (list/iterable): The array that you want to sort
+            reverse (bool): True to sort the array in decsending order, else False
         Returns:
-            sortedArray- The array after sorting
+            sortedArray (list/iterable): The array after sorting
         """
         # base case for recursion
         n = len(array)
@@ -195,8 +193,8 @@ class Sortify:
 
         mid_index = n // 2 # selecting the mid index to split the array at
         
-        left = Sortify.mergeSort(array[ : mid_index], reverse) # performing recursive splits on the left array 
-        right = Sortify.mergeSort(array[mid_index : ], reverse) # performing recursive splits on the right array
+        left = Sortify.merge(array[ : mid_index], reverse) # performing recursive splits on the left array 
+        right = Sortify.merge(array[mid_index : ], reverse) # performing recursive splits on the right array
 
-        return Sortify.merge(left, right, reverse) # finally merging the splits while sorting
+        return Sortify.mergeList(left, right, reverse) # finally merging the splits while sorting
 
