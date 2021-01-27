@@ -74,36 +74,36 @@ class Sortify:
         n = len(array)
         if reverse:    
             for i in range(1,n):
-                key_item = array[i] #item that we need to insert at the appropriate posn
-                j = i-1 #assumed position of key item; also the position upto which we assume the array is sorted
+                key_item = array[i] # item that we need to insert at the appropriate posn
+                j = i-1 
 
-                while j >= 0 and array[j] < key_item: #looping through the sorted subarray backwards to check if the items are smaller than the key item 
-                    array[j+1] = array[j] #if item is greater subarray item is smaller than the key item, moving it to the right
+                while j >= 0 and array[j] < key_item: # looping through the sorted subarray backwards to check if the items are smaller than the key item 
+                    array[j+1] = array[j] # if subarray item is smaller than the key item, moving it to the right
                     j -= 1 
                 
-                array[j+1] = key_item #inserting the key item at its appropriate place
+                array[j+1] = key_item # inserting the key item at its appropriate place
 
         else:
             for i in range(1,n):
-                key_item = array[i] #item that we need to insert at the appropriate posn
-                j = i-1 #assumed position of key item; also the position upto which we assume the array is sorted
+                key_item = array[i] # item that we need to insert at the appropriate posn
+                j = i-1 # assumed position of key item; also the position upto which we assume the array is sorted
 
                 while j >= 0 and array[j] > key_item: #looping through the sorted subarray backwards to check if the items are greater than the key item 
-                    array[j+1] = array[j] #if item is greater subarray item is greater than the key item, moving it to the right
+                    array[j+1] = array[j] # if subarray item is greater than the key item, moving it to the right
                     j -= 1 
                 
-                array[j+1] = key_item #inserting the key item at its appropriate place
+                array[j+1] = key_item # inserting the key item at its appropriate place
 
         return array
     
     @staticmethod
     def quickSort(array, reverse = False):
         """Performs quick sort on the input array.
-        Args:
-            array- The array that you want to sort
-            reverse- True to sort the array in decsending order, else False
+        Args-
+            array (list/iterable): The array that you want to sort
+            reverse (bool): True to sort the array in decsending order, else False
         Returns:
-            sortedArray- The array after sorting
+            sortedArray (list/iterable)- The array after sorting
         """
         # base case for recursion
         n = len(array)
@@ -117,7 +117,7 @@ class Sortify:
         if reverse:
             for element in array: # iterating through the array placing the elements in the correct position
                 if element > pivot:
-                    left.append(element) # append has constant time complexity
+                    left.append(element) 
                 elif element < pivot:
                     right.append(element)
                 else:
@@ -125,7 +125,7 @@ class Sortify:
         else:
             for element in array: # iterating through the array placing the elements in the correct position
                 if element < pivot:
-                    left.append(element) # append has constant time complexity
+                    left.append(element) 
                 elif element > pivot:
                     right.append(element)
                 else:
@@ -145,31 +145,38 @@ class Sortify:
         len_right = len(right)
         
         left_index = right_index = 0
-        
-        while len(sorted) < len_left + len_right:
-            if left_index < len_left and right_index < len_right:
-                if reverse: 
+
+        if reverse: # for sorting in reverse order (largest to smallest)
+            while len(sorted) < len_left + len_right:
+                if left_index < len_left and right_index < len_right:
                     if left[left_index] >= right[right_index]:
                         sorted.append(left[left_index])
-                        left_index += 1
+                        left_index += 1  
                     else:
                         sorted.append(right[right_index])
                         right_index += 1
-                else:
+                if left_index == len_left:
+                    sorted += right[right_index:]
+                    break
+                elif right_index == len_right:
+                    sorted += left[left_index:]
+                    break
+        else: # for sorting in ascending order (smallest to largest)
+            while len(sorted) < len_left + len_right:
+                if left_index < len_left and right_index < len_right:
                     if left[left_index] <= right[right_index]:
                         sorted.append(left[left_index])
                         left_index += 1
                     else:
                         sorted.append(right[right_index])
                         right_index += 1
-            
-            if left_index == len_left:
-                sorted += right[right_index:]
-                break
-            elif right_index == len_right:
-                sorted += left[left_index:]
-                break
-            
+                
+                if left_index == len_left:
+                    sorted += right[right_index:]
+                    break
+                elif right_index == len_right:
+                    sorted += left[left_index:]
+                    break     
         return sorted
     
     @staticmethod
@@ -195,4 +202,4 @@ class Sortify:
 
 
 if __name__ == "__main__":
-    print(Sortify.bubbleSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], True))
+    print(Sortify.mergeSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], True))
