@@ -200,6 +200,3 @@ class Sortify:
 
         return Sortify.merge(left, right, reverse) # finally merging the splits while sorting
 
-
-if __name__ == "__main__":
-    print(Sortify.mergeSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], True))
