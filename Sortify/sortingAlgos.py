@@ -9,23 +9,23 @@ class Sortify:
             sortedArray- The array after sorting
         """
         n = len(array)
-        for i in range(n):
-
-            sorted = True
-
-            if reverse:
+        if reverse:
+            for i in range(n):
+                sorted = True
                 for j in range(n-1-i):
                     if array[j] < array[j+1]:
                         array[j], array[j+1] = array[j+1], array[j]
                         sorted = False
-            else:
+                if sorted:
+                    break
+        else:
+            for i in range(n):
                 for j in range(n-1-i):
                     if array[j] > array[j+1]:
                         array[j], array[j+1] = array[j+1], array[j]
                         sorted = False
-
-            if sorted:
-                break
+                if sorted:
+                    break
         return array 
 
 
@@ -195,4 +195,4 @@ class Sortify:
 
 
 if __name__ == "__main__":
-    print(Sortify.mergeSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], False))
+    print(Sortify.bubbleSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], False))
