@@ -1,4 +1,4 @@
-class Sortify:
+class Sort:
     @staticmethod
     def bubble(array, reverse = False):
         """Performs bubble sort on the input array.
@@ -129,7 +129,7 @@ class Sortify:
                 else:
                     same.append(element)
 
-        return Sortify.quick(left, reverse) + same + Sortify.quick(right, reverse) # using recursion for further sorting
+        return Sort.quick(left, reverse) + same + Sort.quick(right, reverse) # using recursion for further sorting
 
     
     
@@ -193,8 +193,8 @@ class Sortify:
 
         mid_index = n // 2 # selecting the mid index to split the array at
         
-        left = Sortify.merge(array[ : mid_index], reverse) # performing recursive splits on the left array 
-        right = Sortify.merge(array[mid_index : ], reverse) # performing recursive splits on the right array
+        left = Sort.merge(array[ : mid_index], reverse) # performing recursive splits on the left array 
+        right = Sort.merge(array[mid_index : ], reverse) # performing recursive splits on the right array
 
-        return Sortify.mergeList(left, right, reverse) # finally merging the splits while sorting
+        return Sort.mergeList(left, right, reverse) # finally merging the splits while sorting
 

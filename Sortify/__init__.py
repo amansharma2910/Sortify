@@ -1,1 +1,1 @@
-from .sortingAlgos import Sortify
+from .sortingAlgos import Sort
