@@ -2,11 +2,11 @@ class Sortify:
     @staticmethod
     def bubbleSort(array, reverse = False):
         """Performs bubble sort on the input array.
-        Args:
-            array- The array that you want to sort
-            reverse- True to sort the array in decsending order, else False
-        Returns:
-            sortedArray- The array after sorting
+        Args-
+            array (list/iterable): The array that you want to sort
+            reverse (bool): True to sort the array in decsending order, else False
+        Returns-
+            sortedArray (list/iterable): The array after sorting
         """
         n = len(array)
         if reverse:
@@ -195,4 +195,4 @@ class Sortify:
 
 
 if __name__ == "__main__":
-    print(Sortify.bubbleSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], False))
+    print(Sortify.bubbleSort([4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47], True))
